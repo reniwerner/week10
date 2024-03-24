@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holiday Mocktails</title>
+  <style>
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      width: 200px;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .card-info {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .card-info h3 {
+      margin-bottom: 5px;
+    }
+
+    .recipe {
+      display: none;
+      font-size: 14px;
+    }
+
+    .calories-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Holiday Mocktails</h1>
+  <div class="wrapper">
+    <div class="card" data-recipe="Mix cranberry juice, sparkling water, and apple cider. Serve chilled." data-calories="120">
+      <img src="cranberryspice_v1_1.jpg" alt="Mocktail 1">
+      <div class="card-info">
+        <h3>Cranberry Spice</h3>
+        <p>Main Ingredients: Cranberry juice, sparkling water, apple cider</p>
+        <p class="recipe">Recipe: Mix cranberry juice, sparkling water, and apple cider. Serve chilled.</p>
+      </div>
+    </div>
+
+    <div class="card" data-recipe="Shake ingredients with ice and strain. Then add kombucha." data-calories="90">
+      <img src="ccc-7988-small-1570392587.jpg" alt="Mocktail 2">
+      <div class="card-info">
+        <h3>Christmas Lights</h3>
+        <p>Main Ingredients: Cranberry juice, lemon juice, sorrel tea, kombucha</p>
+        <p class="recipe">Recipe: Shake ingredients with ice and strain. Then add kombucha.</p>
+      </div>
+    </div>
+
+    <div class="card" data-recipe="Shake ingredients with ice." data-calories="90">
+      <img src="spice_sour_1.jpg" alt="Mocktail 3">
+      <div class="card-info">
+        <h3>Seedlip Spice Sour</h3>
+        <p>Main Ingredients: Seedlip Spice 94, lemon juice, sugar, egg white, white wine vinegar</p>
+        <p class="recipe">Recipe: Shake ingredients with ice.</p>
+      </div>
+    </div>
+
+    <div class="card" data-recipe="Shake ingredients with ice and strain." data-calories="90">
+      <img src="lamplighter-inn-1-1570391051.jpg" alt="Mocktail 4">
+      <div class="card-info">
+        <h3>Lamplighter Inn</h3>
+        <p>Main Ingredients: Heavy cream, coffee grounds syrup, lemon juice, egg white</p>
+        <p class="recipe">Recipe: Shake ingredients with ice and strain.</p>
+      </div>
+    </div>
+
+    <div class="card" data-recipe="Shake ingredients with ice and strain." data-calories="90">
+      <img src="20191003-164404-1570394035.jpg" alt="Mocktail 5">
+      <div class="card-info">
+        <h3>Holiday Mule</h3>
+        <p>Main Ingredients: Cinnamon syrup, lime juice, cranberry juice, ginger beer</p>
+        <p class="recipe">Recipe: Shake ingredients with ice and strain.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="calories-container">
+    <p id="calories"></p>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('.card').mouseenter(function() {
+        $(this).find('.recipe').fadeIn();
+      });
+
+      $('.card').mouseleave(function() {
+        $(this).find('.recipe').fadeOut();
+      });
+
+      $('.card').click(function() {
+        var calories = $(this).data('calories');
+        $('.calories-container').fadeIn().delay(1500).fadeOut();
+        $('#calories').text('Calories: ' + calories);
+      });
+    });
+  </script>
+</body>
+</html>
